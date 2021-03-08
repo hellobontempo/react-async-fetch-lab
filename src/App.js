@@ -3,17 +3,26 @@ import React from "react";
 
 export default class App extends React.Component {
 
+    state = {
+        people: []
+    }
     render(){
         return (
-        <div></div>
+        <div>
+         {this.state.people}
+        </div>
         )
     }
 
     componentDidMount(){
         fetch('http://api.open-notify.org/astros.json')
             .then (resp => resp.json())
-                .then (json => console.log(json))
+                .then (json => this.setState({json}))
     }
+
+
+ 
+
 }
 
     
